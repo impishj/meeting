@@ -1,0 +1,118 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <!-- Place favicon.ico in the root directory -->
+
+        <!-- <link rel="stylesheet" href="css/normalize.css"> -->
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/skeleton.css">
+        <style>
+        /*
+        custom bug squash:
+        */
+        div[contenteditable=true] {
+          -webkit-user-select: auto !important;
+          -khtml-user-select: auto !important;
+          -moz-user-select: auto !important;
+          -ms-user-select: auto !important;
+          -o-user-select: auto !important;
+          user-select: auto !important;
+        }
+        </style>
+        <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+    </head>
+    <body>
+        <!--[if lte IE 9]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+        <![endif]-->
+    <div class="container editing">
+        <div class="row controls">
+            <div class="four columns"></div>
+            <button id="minutes1">1 minute timer</button>
+            <button id="seconds90">1 1/2 minute timer</button>
+            <button id="minutes2">2 minute timer</button>
+            <div class="eight columns"> </div>
+        </div>
+	</div>
+	    <script src="https://code.jquery.com/jquery-3.2.0.min.js" integrity="sha256-JAW99MJVpJBGcbzEuXk4Az05s/XyDdBomFqNlM3ic+I=" crossorigin="anonymous"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.2.0.min.js"><\/script>')</script>
+        <script src="js/jquery.min.js"></script>
+        <script>
+"use strict";
+/* Drag and Drop Functionality */
+
+/* End Drag and Drop Funcs */
+
+$().ready(function(){
+var meetingTimer = function(timeDelaySet,audioFileName){
+	console.log(timeDelaySet+"< how long"+audioFileName+"< audioFile")
+
+
+	var a1 = new Audio(audioFileName);
+	// var a2 = new Audio('dingdingding.mp3');
+	setTimeout(function() {
+		a1.play();
+	}, timeDelaySet);
+	// 2 minute timer - 120000 ms
+	// 90 sec 90000
+	// 1 minute 60000
+	// 20 seconds 20 000 till end should make another sound
+
+	}
+
+	// meetingTimer(20000); // cookstep namespace
+
+	$("#minutes1").on("click", function(e){
+		meetingTimer(40000,"ding.mp3")
+		meetingTimer(60000,"dingdingding.mp3")
+		var countDownNumber = 60;
+		$("#minutes1").html(countDownNumber+" Seconds remaining");
+		setInterval(function() {
+			countDownNumber--
+			$("#minutes1").html(countDownNumber+" Seconds remaining");
+		}, 1000);
+	});
+
+	$("#minutes2").on("click", function(e){
+		meetingTimer(100000,"ding.mp3")
+		meetingTimer(120000,"dingdingding.mp3")
+		var countDownNumber = 120;
+		$("#minutes2").html(countDownNumber+" Seconds remaining");
+		setInterval(function() {
+			countDownNumber--
+			$("#minutes2").html(countDownNumber+" Seconds remaining");
+		}, 1000);
+	});
+
+	$("#seconds90").on("click", function(e){
+		meetingTimer(70000,"ding.mp3")
+		meetingTimer(90000,"dingdingding.mp3")
+		var countDownNumber = 90;
+		$("#seconds90").html(countDownNumber+" Seconds remaining");
+		setInterval(function() {
+			countDownNumber--
+			$("#seconds90").html(countDownNumber+" Seconds remaining");
+		}, 1000);
+	});
+
+}); // jquery on ready
+
+
+        </script>
+
+<style>
+/*
+    SLOW
+*/
+@import url('fonts/Tinos-Regular.ttf');
+</style>
+    </body>
+</html>
+
